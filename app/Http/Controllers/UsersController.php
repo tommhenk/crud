@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -13,7 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view(config('settings.theme').'.index', ['users'=>$users]);
     }
 
     /**
@@ -23,7 +25,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        
+
+        return view(config('settings.theme').'.form');
     }
 
     /**
@@ -34,7 +38,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -43,9 +47,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( User $user )
     {
-        //
+        return view(config('settings.theme').'.show');
     }
 
     /**
@@ -54,9 +58,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( User $user )
     {
-        //
+        
+
+        return view(config('settings.theme').'.form', compact('user'));
     }
 
     /**
@@ -66,7 +72,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user )
     {
         //
     }
@@ -77,7 +83,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( User $user )
     {
         //
     }
