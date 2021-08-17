@@ -51,7 +51,7 @@ class UsersController extends Controller
      */
     public function show( User $user )
     {
-        return view(config('settings.theme').'.show');
+        return view(config('settings.theme').'.show', compact('user'));
     }
 
     /**
