@@ -12,11 +12,17 @@
   <div class="row mt-3">
     <div class="col">
       <input type="text" name="name" class="form-control" placeholder="name" aria-label="Name" value="{{ isset($user) ? $user->name : old('name') }}">
+      @error('name')
+      <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mt-3">
     <div class="col">
       <input type="text" name="email" class="form-control" placeholder="email" aria-label="Email" value="{{ isset($user) ? $user->email : old('email') }}">
+      @error('email')
+      <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
   </div>
   <div class="row mt-3">
