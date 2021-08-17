@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('user', function ($value){
-            return App\Models\User::findOrFail($value);
+            return \App\Models\User::findOrFail($value);
         });
     }
 

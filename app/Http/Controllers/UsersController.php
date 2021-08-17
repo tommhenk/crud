@@ -38,7 +38,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->except('_token');
+        User::create($data);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -74,7 +76,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user )
     {
-        //
+        $data = $request->except('_token');
+        $user->update($data);
+        return redirect()->route('users.index');
     }
 
     /**
