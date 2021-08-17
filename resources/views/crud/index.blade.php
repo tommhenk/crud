@@ -28,7 +28,12 @@
           	</a>
           </td>
           <td>
-          	<a class="btn btn-warning" type="button" href="{{ route('users.edit', $user) }}">Edit</a>
+          	<form action="{{ route('users.destroy', $user) }}" method="POST">
+          		@method('DELETE')
+          		@csrf
+          		<a class="btn btn-warning" type="button" href="{{ route('users.edit', $user) }}">Edit</a>
+          		<button type="submit" class="btn btn-danger">Delete</button>
+          	</form>
           </td>
         </tr>
       	@endforeach
