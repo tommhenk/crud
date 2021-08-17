@@ -41,7 +41,7 @@ class UsersController extends Controller
     {
         $data = $request->except('_token');
         User::create($data);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Created user '.$request->name);
     }
 
     /**
@@ -79,7 +79,7 @@ class UsersController extends Controller
     {
         $data = $request->except('_token');
         $user->update($data);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Updated user '.$request->name);
     }
 
     /**
@@ -91,6 +91,6 @@ class UsersController extends Controller
     public function destroy( User $user )
     {
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('danger', 'Deleted user '.$user->name);
     }
 }
